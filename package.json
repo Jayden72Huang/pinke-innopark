@@ -1,0 +1,7 @@
+{
+  "name": "pinke-innopark",
+  "version": "1.0.0",
+  "private": true,
+  "description": "品客小镇·青创城 品牌官网",
+  "engines": { "node": "20.x" }
+}

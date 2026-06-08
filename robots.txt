@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# 允许 AI 抓取（GEO）
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://szpinke.business/sitemap.xml
