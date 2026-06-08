@@ -15,7 +15,7 @@
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://pinke.business/" />
   <link rel="icon" href="assets/logo.png" />
-  <link rel="stylesheet" href="styles.css?v=12" />
+  <link rel="stylesheet" href="styles.css?v=14" />
 
   <!-- 结构化数据：本地企业 / 园区（利于 Google 收录与 AI 引用 GEO） -->
   <script type="application/ld+json">
@@ -177,79 +177,61 @@
     </div>
   </section>
 
-  <!-- ============ 产业优势（新增） ============ -->
-  <section class="section section--alt" id="industry">
+  <!-- ============ 交通区位 + 高德地图 ============ -->
+  <section class="section section--alt" id="location">
     <div class="container">
       <div class="section__head reveal">
-        <span class="kicker">产业优势</span>
-        <h2>双产业聚集，创业不孤单</h2>
-        <p class="lead">园区重点聚集智能硬件智造与电商直播两大产业，上下游就在隔壁，资源对接更高效。</p>
+        <span class="kicker">交通区位</span>
+        <h2>深圳北站旁，地铁口物业</h2>
+        <p class="lead">
+          位于深圳市龙华区民治街道，紧邻深圳北站高铁枢纽与地铁站，
+          周边商业、餐饮、休闲配套成熟，通勤与生活两不误。
+        </p>
       </div>
-      <div class="industry__grid">
-        <article class="industry reveal">
-          <img src="assets/space-hall.jpg" alt="智能硬件智造产业空间" loading="lazy" />
-          <div class="industry__body">
-            <span class="industry__tag">智能硬件 · 智造</span>
-            <h3>智能硬件 / 智能制造</h3>
-            <p>约 4 米层高、大承重空间与货梯配套，适配研发打样、小批量智造与硬科技团队，
-               毗邻深圳北站，供应链与人才触手可及。</p>
-            <ul class="ticks">
-              <li>大空间 + 高层高，研发打样无压力</li>
-              <li>临深圳北站，深莞供应链当天可达</li>
-              <li>硬科技团队聚集，上下游协同</li>
-            </ul>
-          </div>
-        </article>
-        <article class="industry reveal">
-          <img src="assets/space-bright.jpg" alt="电商直播跨境产业空间" loading="lazy" />
-          <div class="industry__body">
-            <span class="industry__tag">电商 · 直播 · 跨境</span>
-            <h3>电商 / 直播 / 跨境贸易</h3>
-            <p>明亮通透空间适配直播间、选品与运营团队，园区电商氛围浓厚，
-               商家社群活跃，资源与流量在群里直接流转、快速转化。</p>
-            <ul class="ticks">
-              <li>适配直播间 / 选品 / 客服团队布局</li>
-              <li>电商商家聚集，社群对接更直接</li>
-              <li>临万象龙华、奥莱，选品物流便利</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ 园区优势（对比性） ============ -->
-  <section class="section" id="advantages">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="kicker">为什么选择品客</span>
-        <h2>同区域对比，优势一目了然</h2>
-        <p class="lead">与龙华民治周边写字楼相比，品客小镇·青创城在多个维度上更具竞争力。</p>
-      </div>
-      <div class="compare__table reveal">
-        <div class="compare__row compare__header">
-          <span>对比项</span><span>品客小镇·青创城</span><span>周边同类写字楼</span>
+      <div class="loc__layout">
+        <div class="loc__info">
+          <div class="loc__item reveal">
+            <span class="loc__icon">🚄</span>
+            <div>
+              <h4>深圳北站 高铁动车枢纽</h4>
+              <p>距 4 号线（龙华线）深圳北站约 500–800 米，高铁通达大湾区。</p>
+            </div>
+          </div>
+          <div class="loc__item reveal">
+            <span class="loc__icon">🚇</span>
+            <div>
+              <h4>地铁 5 号线 民治站</h4>
+              <p>A 出口约 150–300 米，蓝坤大厦正对面，雨天通勤无忧。</p>
+            </div>
+          </div>
+          <div class="loc__item reveal">
+            <span class="loc__icon">🚌</span>
+            <div>
+              <h4>便捷公交网络</h4>
+              <p>公交 22、27 路等多条线路直达，临玉龙路、民治大道、梅龙路。</p>
+            </div>
+          </div>
+          <div class="loc__item reveal">
+            <span class="loc__icon">🛍️</span>
+            <div>
+              <h4>成熟商圈环绕</h4>
+              <p>万象龙华、红山 6979、天虹商场、奥特莱斯8号仓、星河 COCO City 近在咫尺。</p>
+            </div>
+          </div>
         </div>
-        <div class="compare__row">
-          <span>租金</span><span class="compare__highlight">70–75 元/㎡，小型低至 22 元</span><span>80–120 元/㎡ 起</span>
-        </div>
-        <div class="compare__row">
-          <span>物业类型</span><span class="compare__highlight">红本甲级纯办公，可注册公司</span><span>部分为商住混用或无红本</span>
-        </div>
-        <div class="compare__row">
-          <span>层高</span><span class="compare__highlight">约 4 米挑高</span><span>2.8–3.2 米标准层高</span>
-        </div>
-        <div class="compare__row">
-          <span>停车</span><span class="compare__highlight">186 个车位 + 新能源充电桩</span><span>50–80 个车位，常不够用</span>
-        </div>
-        <div class="compare__row">
-          <span>地铁</span><span class="compare__highlight">民治站 A 口 150m</span><span>需步行 500m–1km</span>
-        </div>
-        <div class="compare__row">
-          <span>员工住宿</span><span class="compare__highlight">自带品客公寓 + 健身房</span><span>无配套住宿</span>
-        </div>
-        <div class="compare__row">
-          <span>物业服务</span><span class="compare__highlight">24h 管家 + 安防 + 消防 + 宽带</span><span>基础物业，有限时段</span>
+
+        <div class="loc__map reveal">
+          <div id="amap" class="amap"></div>
+          <div class="map__card" id="mapFallback">
+            <div class="map__pin">📍</div>
+            <h4>园区地址</h4>
+            <p class="map__addr">深圳市龙华区民康路292号<br />品客小镇·青创城</p>
+            <a class="btn btn--ghost btn--block" target="_blank" rel="noopener"
+               href="https://uri.amap.com/marker?position=114.0440,22.6156&name=品客小镇·青创城&src=pinke&coordinate=gaode&callnative=1">
+              在高德地图中打开导航 →
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -377,81 +359,74 @@
     </div>
   </section>
 
-  <!-- ============ 交通区位 + 高德地图 ============ -->
-  <section class="section" id="location">
+  <!-- ============ 园区优势对比 ============ -->
+  <section class="section" id="compare">
     <div class="container">
       <div class="section__head reveal">
-        <span class="kicker">交通区位</span>
-        <h2>深圳北站旁，地铁口物业</h2>
-        <p class="lead">
-          位于深圳市龙华区民治街道，紧邻深圳北站高铁枢纽与地铁站，
-          周边商业、餐饮、休闲配套成熟，通勤与生活两不误。
-        </p>
+        <span class="kicker">园区优势</span>
+        <h2>为什么选择品客小镇·青创城</h2>
+        <p class="lead">七大核心优势 + 全方位配套，对比周边园区一目了然。</p>
       </div>
-
-      <div class="loc__layout">
-        <div class="loc__info">
-          <div class="loc__item reveal">
-            <span class="loc__icon">🚄</span>
-            <div>
-              <h4>深圳北站 高铁动车枢纽</h4>
-              <p>距 4 号线（龙华线）深圳北站约 500–800 米，高铁通达大湾区。</p>
-            </div>
-          </div>
-          <div class="loc__item reveal">
-            <span class="loc__icon">🚇</span>
-            <div>
-              <h4>地铁 5 号线 民治站</h4>
-              <p>A 出口约 150–300 米，蓝坤大厦正对面，雨天通勤无忧。</p>
-            </div>
-          </div>
-          <div class="loc__item reveal">
-            <span class="loc__icon">🚌</span>
-            <div>
-              <h4>便捷公交网络</h4>
-              <p>公交 22、27 路等多条线路直达，临玉龙路、民治大道、梅龙路。</p>
-            </div>
-          </div>
-          <div class="loc__item reveal">
-            <span class="loc__icon">🛍️</span>
-            <div>
-              <h4>成熟商圈环绕</h4>
-              <p>万象龙华、红山 6979、天虹商场、奥特莱斯8号仓、星河 COCO City 近在咫尺。</p>
-            </div>
-          </div>
+      <div class="compare__table reveal">
+        <div class="compare__row compare__header">
+          <span>对比项</span><span>品客小镇·青创城</span><span>周边同类园区</span>
         </div>
-
-        <div class="loc__map reveal">
-          <!-- 高德地图容器：在 script.js 顶部配置 AMAP_KEY 后自动渲染，未配置则显示占位卡 -->
-          <div id="amap" class="amap"></div>
-          <div class="map__card" id="mapFallback">
-            <div class="map__pin">📍</div>
-            <h4>园区地址</h4>
-            <p class="map__addr">深圳市龙华区民康路292号<br />品客小镇·青创城</p>
-            <a class="btn btn--ghost btn--block" target="_blank" rel="noopener"
-               href="https://uri.amap.com/marker?position=114.0440,22.6156&name=品客小镇·青创城&src=pinke&coordinate=gaode&callnative=1">
-              在高德地图中打开导航 →
-            </a>
-          </div>
+        <div class="compare__row">
+          <span>物业性质</span><span class="compare__win">红本 · 可注册公司</span><span>部分非红本</span>
+        </div>
+        <div class="compare__row">
+          <span>层高</span><span class="compare__win">约 4 米挑高</span><span>2.7–3 米居多</span>
+        </div>
+        <div class="compare__row">
+          <span>地铁距离</span><span class="compare__win">民治站 A 口 150 米</span><span>多数 500 米+</span>
+        </div>
+        <div class="compare__row">
+          <span>停车位</span><span class="compare__win">186 位 · 电子收费</span><span>多数 ≤50 位</span>
+        </div>
+        <div class="compare__row">
+          <span>配套公寓</span><span class="compare__win">自营品客公寓 200+ 套</span><span>无 / 需外租</span>
+        </div>
+        <div class="compare__row">
+          <span>入驻门槛</span><span class="compare__win">28㎡ 起 · 拎包入驻</span><span>多数 100㎡ 起</span>
+        </div>
+        <div class="compare__row">
+          <span>产业氛围</span><span class="compare__win">智能硬件 + 电商直播</span><span>混合业态</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 老带新奖励（裂变） ============ -->
-  <section class="section section--referral" id="referral">
+  <!-- ============ 两大产业方向 ============ -->
+  <section class="section section--alt" id="industry">
     <div class="container">
-      <div class="referral__card reveal">
-        <div class="referral__text">
-          <span class="kicker">老带新奖励</span>
-          <h2>推荐企业入驻，<br />一起拿奖励</h2>
-          <p>把品客小镇·青创城推荐给电商群、创业圈的朋友，被推荐企业成功签约入驻，
-             推荐人与新企业双方都可获得奖励。欢迎来电了解具体奖励方案。</p>
+      <div class="section__head reveal">
+        <span class="kicker">产业方向</span>
+        <h2>聚焦两大优势产业</h2>
+        <p class="lead">
+          品客小镇·青创城重点培育智能硬件智造与电商直播跨境两大方向，
+          为入驻企业提供精准的产业协同与上下游资源。
+        </p>
+      </div>
+      <div class="industry__cols">
+        <div class="industry__card reveal">
+          <div class="industry__icon">⚙️</div>
+          <h3>智能硬件智造</h3>
+          <ul>
+            <li>毗邻龙华智造核心区</li>
+            <li>硬件打样 → 小批量产 → 出货一站到位</li>
+            <li>园区上下游协同，缩短供应链</li>
+            <li>适合：IoT、消费电子、嵌入式、机器人团队</li>
+          </ul>
         </div>
-        <div class="referral__steps">
-          <div class="rstep reveal"><b>1</b><span>转发园区信息<br />给群友 / 朋友</span></div>
-          <div class="rstep reveal"><b>2</b><span>对方来电报你<br />名字预约看房</span></div>
-          <div class="rstep reveal"><b>3</b><span>成功签约<br />双方得奖励</span></div>
+        <div class="industry__card reveal">
+          <div class="industry__icon">📦</div>
+          <h3>电商直播 · 跨境电商</h3>
+          <ul>
+            <li>靠近深圳北站快递物流枢纽</li>
+            <li>抖音 / 快手 / TikTok / Amazon 卖家聚集</li>
+            <li>直播间 + 仓储 + 办公一体化空间</li>
+            <li>适合：MCN 机构、品牌电商、海外独立站团队</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -514,6 +489,25 @@
             <button type="submit" class="btn btn--primary btn--block">提交，等待回拨</button>
             <p class="form__hint" id="formHint">提交即表示同意我们与您电话联系，我们不会向第三方泄露您的信息。</p>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 老带新奖励（裂变） ============ -->
+  <section class="section section--referral" id="referral">
+    <div class="container">
+      <div class="referral__card reveal">
+        <div class="referral__text">
+          <span class="kicker">老带新奖励</span>
+          <h2>推荐企业入驻，<br />一起拿奖励</h2>
+          <p>把品客小镇·青创城推荐给电商群、创业圈的朋友，被推荐企业成功签约入驻，
+             推荐人与新企业双方都可获得奖励。欢迎来电了解具体奖励方案。</p>
+        </div>
+        <div class="referral__steps">
+          <div class="rstep reveal"><b>1</b><span>转发园区信息<br />给群友 / 朋友</span></div>
+          <div class="rstep reveal"><b>2</b><span>对方来电报你<br />名字预约看房</span></div>
+          <div class="rstep reveal"><b>3</b><span>成功签约<br />双方得奖励</span></div>
         </div>
       </div>
     </div>
