@@ -15,7 +15,7 @@
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://pinke.business/" />
   <link rel="icon" href="assets/logo.png" />
-  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 
   <!-- 结构化数据：本地企业 / 园区（利于 Google 收录与 AI 引用 GEO） -->
   <script type="application/ld+json">
@@ -38,7 +38,7 @@
       "addressRegion": "广东省",
       "addressCountry": "CN"
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": 22.6156, "longitude": 114.0440 },
+    "geo": { "@type": "GeoCoordinates", "latitude": 22.6150, "longitude": 114.0410 },
     "openingHours": "Mo-Su 09:00-18:00",
     "nearbyAttractions": "深圳北站、地铁5号线民治站、万象龙华、红山6979"
   }
@@ -194,8 +194,8 @@
           <div class="loc__item reveal">
             <span class="loc__icon">🚄</span>
             <div>
-              <h4>深圳北站 高铁动车枢纽</h4>
-              <p>距 4 号线（龙华线）深圳北站约 500–800 米，高铁通达大湾区。</p>
+              <h4>深圳北站 高铁 + 地铁双枢纽</h4>
+              <p>地铁 4 / 5 / 6 号线深圳北站约 500–800 米，高铁直达大湾区。</p>
             </div>
           </div>
           <div class="loc__item reveal">
@@ -228,7 +228,7 @@
             <h4>园区地址</h4>
             <p class="map__addr">深圳市龙华区民康路292号<br />品客小镇·青创城</p>
             <a class="btn btn--ghost btn--block" target="_blank" rel="noopener"
-               href="https://uri.amap.com/marker?position=114.0440,22.6156&name=品客小镇·青创城&src=pinke&coordinate=gaode&callnative=1">
+               href="https://uri.amap.com/marker?position=114.0410,22.6150&name=品客小镇·青创城&src=pinke&coordinate=gaode&callnative=1">
               在高德地图中打开导航 →
             </a>
           </div>
@@ -578,7 +578,15 @@
     <span class="fab__text">招商热线</span>
   </a>
 
-  <script src="config.js"></script>
+  <!-- 高德地图配置：内联默认值（高德 Web 端 JS key 本就需暴露在前端，安全靠后台域名白名单保证）。
+       本地如存在 config.js 会覆盖此默认值；线上无 config.js 时用此兜底，避免地图空白。 -->
+  <script>
+    window.PINKE_CONFIG = {
+      AMAP_KEY: "f5b485843f792585c6119329739a920d",
+      AMAP_SECURITY: "20a84082faa1de24ca69c7a0084e5e01",
+      PARK_LNGLAT: [114.0410, 22.6150]
+    };
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
