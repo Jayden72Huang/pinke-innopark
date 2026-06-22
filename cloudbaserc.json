@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.cloudbase.net/cli/cloudbaserc.schema.json",
+  "envId": "jayden-01-d1g8nsnkbc91f4680",
+  "functionRoot": "cloudfunctions",
+  "functions": [
+    {
+      "name": "lead",
+      "timeout": 15,
+      "runtime": "Nodejs18.15",
+      "handler": "index.main",
+      "installDependency": false
+    }
+  ]
+}

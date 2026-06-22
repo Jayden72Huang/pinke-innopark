@@ -1,0 +1,9 @@
+{
+  "name": "lead",
+  "version": "1.0.0",
+  "description": "品客小镇·青创城 留资云函数",
+  "main": "index.js",
+  "dependencies": {
+    "@cloudbase/node-sdk": "^3.7.0"
+  }
+}

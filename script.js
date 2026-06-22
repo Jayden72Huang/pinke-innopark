@@ -164,7 +164,18 @@ var PARK_LNGLAT = CFG.PARK_LNGLAT || [114.0440, 22.6156]; // 园区经纬度（�
   }
   loadAMap();
 
-  // 留资表单 → 提交到飞书（经 /api/lead Serverless 函数）
+  // 提交留资 → 腾讯云 CloudBase HTTP 云函数（入库 + 可选推飞书）
+  function submitLead(data) {
+    var api = window.PINKE_LEAD_API;
+    if (!api) return Promise.reject(new Error("api-unconfigured"));
+    return fetch(api, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); });
+  }
+
+  // 留资表单 → 提交到云函数
   var form = document.getElementById("leadForm");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -185,12 +196,8 @@ var PARK_LNGLAT = CFG.PARK_LNGLAT || [114.0440, 22.6156]; // 园区经纬度（�
       };
       btn.disabled = true;
       btn.textContent = "提交中…";
-      fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      submitLead(data)
+        .then(function (res) { return (res && res.ok) ? res : Promise.reject(res); })
         .then(function () {
           hint.textContent = "✓ 已收到，" + name + " 您好，我们会尽快拨打 " + phone + " 与您联系！";
           hint.classList.add("ok");
