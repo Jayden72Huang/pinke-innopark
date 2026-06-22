@@ -12,9 +12,35 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/exterior-1.jpg" />
   <meta property="og:locale" content="zh_CN" />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
   <link rel="canonical" href="https://pinke.business/" />
   <link rel="icon" href="assets/logo.png" />
+
+  <!-- ===== 百度 SEO 专属（移动适配 + 站长验证）===== -->
+  <meta name="applicable-device" content="pc,mobile" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="format-detection" content="telephone=yes" />
+  <meta name="theme-color" content="#0b1220" />
+  <!-- 百度站长验证：到 https://ziyuan.baidu.com 添加站点后，把 code 值填入下行 content 并取消注释 -->
+  <!-- <meta name="baidu-site-verification" content="codeva-xxxxxxxx" /> -->
+  <!-- 360 站长验证（可选）：<meta name="360-site-verification" content="xxxxxxxx" /> -->
+  <!-- 搜狗站长验证（可选）：<meta name="sogou_site_verification" content="xxxxxxxx" /> -->
+
+  <!-- ===== 地理位置 meta（利于本地搜索 / 地图类 AI 引用）===== -->
+  <meta name="geo.region" content="CN-44" />
+  <meta name="geo.placename" content="深圳市龙华区民治街道" />
+  <meta name="geo.position" content="22.6150;114.0410" />
+  <meta name="ICBM" content="22.6150, 114.0410" />
+
+  <!-- ===== Twitter / X 卡片 ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="品客小镇·青创城｜深圳龙华民治 · 深圳北站甲级创客办公园区" />
+  <meta name="twitter:description" content="4万㎡甲级纯办公园区 · 28-4000㎡即租即用 · 红本可注册公司 · 距地铁民治站150米 · 招商热线136-1283-2188" />
+  <meta name="twitter:image" content="https://pinke.business/assets/exterior-1.jpg" />
+  <meta property="og:url" content="https://pinke.business/" />
+  <meta property="og:site_name" content="品客小镇·青创城" />
+
   <link rel="stylesheet" href="styles.css?v=15" />
 
   <!-- 结构化数据：本地企业 / 园区（利于 Google 收录与 AI 引用 GEO） -->
@@ -53,6 +79,79 @@
       {"@type":"Question","name":"品客小镇·青创城离地铁和高铁站有多远？","acceptedAnswer":{"@type":"Answer","text":"距地铁5号线民治站A出口约150-300米，距深圳北站高铁枢纽约500-800米，公交22、27路直达。"}},
       {"@type":"Question","name":"园区有停车位吗？适合什么企业入驻？","acceptedAnswer":{"@type":"Answer","text":"园区配186个停车位，4万㎡甲级纯办公，主要聚集智能硬件智造、电商直播跨境企业，并配套品客公寓（自带健身房）解决员工住宿。"}}
     ]
+  }
+  </script>
+  <!-- 组织与网站实体（利于品牌词知识面板与 AI 实体识别） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "品客小镇·青创城",
+    "alternateName": ["PINKE INNO CITY", "青创城", "品客小镇"],
+    "url": "https://pinke.business/",
+    "logo": "https://pinke.business/assets/logo.png",
+    "image": "https://pinke.business/assets/exterior-1.jpg",
+    "description": "深圳龙华民治、深圳北站未来商务区的4万㎡甲级纯办公创客园区，办公室出租，红本可注册公司、拎包办公，聚集智能硬件与电商直播产业。",
+    "telephone": "+86-136-1283-2188",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "民康路292号 品客小镇·青创城",
+      "addressLocality": "深圳市龙华区",
+      "addressRegion": "广东省",
+      "postalCode": "518131",
+      "addressCountry": "CN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+86-136-1283-2188",
+      "contactType": "sales",
+      "areaServed": "CN",
+      "availableLanguage": ["zh-CN"]
+    }
+  }
+  </script>
+  <!-- 办公室出租产品与报价（利于 AI 直接引用面积/价格事实） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "品客小镇·青创城 办公室出租",
+    "description": "深圳龙华民治、深圳北站旁甲级纯办公园区，28-4000㎡办公室即租即用、拎包办公，红本可注册公司，一年起租、整层享免租期。",
+    "image": "https://pinke.business/assets/office-1.jpg",
+    "category": "办公室出租 / 写字楼租赁",
+    "brand": {"@type": "Brand", "name": "品客小镇·青创城"},
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "CNY",
+      "lowPrice": "22",
+      "highPrice": "84",
+      "unitText": "元/㎡/月",
+      "offerCount": "3",
+      "availability": "https://schema.org/InStock",
+      "areaServed": "深圳市龙华区",
+      "seller": {"@type": "Organization", "name": "品客小镇·青创城", "telephone": "+86-136-1283-2188"}
+    }
+  }
+  </script>
+  <!-- 配套公寓产品与报价 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "品客公寓 · 园区配套人才公寓",
+    "description": "品客小镇·青创城园区自营 F 栋品客公寓，200+套房源，半年起租，自带免费健身房，智能门锁、拎包入住，紧邻办公区步行可达。",
+    "image": "https://pinke.business/assets/apt-1room-living.jpg",
+    "category": "人才公寓 / 长租公寓",
+    "brand": {"@type": "Brand", "name": "品客公寓"},
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "CNY",
+      "lowPrice": "1200",
+      "highPrice": "3600",
+      "unitText": "元/月",
+      "availability": "https://schema.org/InStock",
+      "seller": {"@type": "Organization", "name": "品客小镇·青创城", "telephone": "+86-136-1283-2188"}
+    }
   }
   </script>
 </head>
@@ -588,5 +687,18 @@
     };
   </script>
   <script src="script.js"></script>
+
+  <!-- 百度站长「自动推送」：访客打开页面即把 URL 推送给百度，加快收录（无需账号即可生效） -->
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https')
+        ? 'https://zz.bdstatic.com/linksubmit/push.js'
+        : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 </body>
 </html>
