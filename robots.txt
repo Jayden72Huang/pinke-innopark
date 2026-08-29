@@ -31,8 +31,21 @@ User-agent: Bingbot
 Allow: /
 
 # ===== AI / 大模型爬虫（GEO）=====
-# 字节跳动 / 豆包 Doubao
+# 字节跳动 / 豆包 Doubao（中文站优先级最高的 AI 爬虫）
 User-agent: Bytespider
+Allow: /
+User-agent: ToutiaoBot
+Allow: /
+# 以下国产 AI 的 UA 有声明但实测低频，放行成本为零
+User-agent: DeepSeekBot
+Allow: /
+User-agent: MoonshotBot
+Allow: /
+User-agent: Moonshot-Kimi-User
+Allow: /
+User-agent: TongyiBot
+Allow: /
+User-agent: AliBot
 Allow: /
 # 智谱清言 / 其它国产模型常用
 User-agent: ClaudeBot
@@ -58,4 +71,4 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-Sitemap: https://pinke.business/sitemap.xml
+Sitemap: https://www.pinkesz.cn/sitemap.xml

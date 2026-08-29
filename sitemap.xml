@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://pinke.business/</loc>
-    <lastmod>2026-06-18</lastmod>
+    <loc>https://www.pinkesz.cn/</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://pinke.business/assets/exterior-1.jpg</image:loc>
+      <image:loc>https://www.pinkesz.cn/assets/exterior-1.jpg</image:loc>
       <image:title>品客小镇·青创城 园区外观</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://pinke.business/assets/office-1.jpg</image:loc>
+      <image:loc>https://www.pinkesz.cn/assets/office-1.jpg</image:loc>
       <image:title>品客小镇·青创城 办公室实景</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://pinke.business/assets/apt-1room-living.jpg</image:loc>
+      <image:loc>https://www.pinkesz.cn/assets/apt-1room-living.jpg</image:loc>
       <image:title>品客公寓 一房两厅实景</image:title>
     </image:image>
   </url>

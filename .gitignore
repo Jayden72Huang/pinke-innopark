@@ -9,3 +9,5 @@ config.js
 
 # 构建产物（tcb hosting 部署用，不入库）
 dist/
+.indexnow-key
+cf167b7b1be4848da036fceaa30fba80.txt
