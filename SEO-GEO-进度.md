@@ -14,8 +14,8 @@
 | GPTBot | 4 | 上线 1 小时内自主发现（CT 证书透明日志） |
 | OAI-SearchBot | 2 | 同上 |
 | **bingbot** | **2** | ⭐ IndexNow 推送后真实来访，抓了 key 文件和 robots.txt |
+| **Bytespider** | **5+** | ⭐⭐ 头条验证后真实来访（36.110.214.x / 36.110.131.x），**豆包链路已通** |
 | Baiduspider | 0 | 日志里那 3 条是自测请求（223.74.158.131 是本机），**真百度未至** |
-| Bytespider | 0 | 豆包爬虫未至 —— 需提交头条搜索站长平台 |
 | Sogou / YisouSpider | 0 | 未提交对应站长平台 |
 
 **结论**：海外引擎自主发现，国内引擎必须主动提交才会来 —— 与 `seo-china` 的核心论点一致。
@@ -34,8 +34,10 @@
 | 百度站点验证 | ✅ 已通过（文件验证） |
 | 百度主动推送 API | ✅ 已推 2 次，日配额 10 条 |
 | 百度 sitemap 提交 | ⏸ 配额 0，**需先填主体备案号** |
+| **头条搜索站点验证** | ✅ **已通过**（HTML 标签，一次即过） |
+| **头条 sitemap 提交** | ✅ **已提交成功** → 喂豆包 |
 | IndexNow | ✅ 已推 3 次（Bing / 神马 生效） |
-| 搜狗 / 头条 / 神马 / Bing 站长 | ⏸ 待提交 |
+| 搜狗 / 神马 / Bing 站长 | ⏸ 待提交（搜狗页面前端卡死，需人工） |
 
 ---
 
@@ -100,8 +102,8 @@ ssh root@115.159.211.15 'grep -i baiduspider /var/log/nginx/pinkesz.access.log |
 | 优先级 | 事项 | 喂给谁 | 入口 |
 |---|---|---|---|
 | ⭐1 | 百度填**主体备案号** `粤ICP备2026122913号` | 开 sitemap 配额 | 站点属性页 |
-| ⭐2 | 头条搜索站长平台提交 | **豆包**（国内月活最大） | zhanzhang.toutiao.com |
-| 3 | 搜狗站长平台提交 | 元宝 + 微信搜一搜 | zhanzhang.sogou.com |
+| ~~⭐2~~ | ~~头条搜索站长平台提交~~ | ✅ **已完成** | — |
+| 2 | 搜狗站长平台提交 | 元宝 + 微信搜一搜 | zhanzhang.sogou.com |
 | 4 | 神马站长平台提交 | 通义千问 + 夸克 | zhanzhang.sm.cn |
 | 5 | Bing 站长平台注册 | 看数据（IndexNow 已在推） | bing.com/webmasters |
 | 6 | 高德 key 白名单换成 pinkesz.cn | 防 key 裸奔 | console.amap.com |
