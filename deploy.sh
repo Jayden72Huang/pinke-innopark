@@ -16,9 +16,15 @@ PUSH=1
 [ "${1:-}" = "--no-push" ] && PUSH=0
 
 echo "▶ 1/5 构建 dist"
+# 长尾落地页由 scripts/build-pages.py 从 scripts/pages_data.py 生成，同时重写 sitemap.xml
+python3 scripts/build-pages.py
 rm -rf dist && mkdir -p dist
-cp index.html styles.css script.js robots.txt sitemap.xml llms.txt dist/
+cp index.html 404.html styles.css script.js robots.txt sitemap.xml llms.txt dist/
 cp -R assets dist/assets
+# 落地页：pages/<slug>/index.html → dist/<slug>/index.html
+for d in pages/*/; do
+  [ -d "$d" ] && cp -R "$d" "dist/$(basename "$d")"
+done
 # 站长平台验证文件 + IndexNow 密钥文件（存在才复制）
 for f in baidu_verify_*.html *_verify_*.txt BingSiteAuth.xml; do
   [ -e "$f" ] && cp "$f" dist/ 2>/dev/null || true
@@ -34,17 +40,9 @@ if ls dist | grep -qiE '^(\.env|config\.js|.*secret.*)$'; then
 fi
 echo "  $(find dist -type f | wc -l | tr -d ' ') 个文件, $(du -sh dist | cut -f1)"
 
-echo "▶ 2/5 更新 sitemap lastmod 为 index.html 真实修改时间"
-python3 - <<'PY'
-import io, os, re, datetime
-mt = datetime.date.fromtimestamp(os.path.getmtime('index.html')).isoformat()
-p = 'dist/sitemap.xml'
-s = io.open(p, encoding='utf-8').read()
-s2 = re.sub(r'<lastmod>[^<]*</lastmod>', f'<lastmod>{mt}</lastmod>', s)
-io.open(p, 'w', encoding='utf-8').write(s2)
-io.open('sitemap.xml', 'w', encoding='utf-8').write(s2)   # 同步回源文件
-print(f'  lastmod = {mt}')
-PY
+echo "▶ 2/5 校验 sitemap"
+# lastmod 由 build-pages.py 按各自源文件真实 mtime 写入（首页看 index.html，落地页看 pages_data.py）
+echo "  $(grep -c '<loc>' dist/sitemap.xml) 条 URL"
 
 echo "▶ 3/5 同步到服务器"
 rsync -az --delete -e "ssh -o BatchMode=yes" dist/ "$SERVER:$REMOTE/"
@@ -69,9 +67,12 @@ fi
 echo "▶ 5/5 IndexNow 推送（Bing / 神马 → 同时喂 Kimi、DeepSeek）"
 if [ -f .indexnow-key ]; then
   KEY=$(cat .indexnow-key)
+  # 从 sitemap 取全部 URL（含落地页），拼成 JSON 数组
+  URLS=$(grep -oE "<loc>[^<]+</loc>" dist/sitemap.xml | sed -E 's|</?loc>||g' \
+    | awk '{printf "%s\"%s\"", (NR>1?",":""), $0}')
   HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
     -H "Content-Type: application/json; charset=utf-8" --max-time 25 \
-    -d "{\"host\":\"www.pinkesz.cn\",\"key\":\"$KEY\",\"keyLocation\":\"$SITE/$KEY.txt\",\"urlList\":[\"$SITE/\",\"$SITE/llms.txt\",\"$SITE/sitemap.xml\"]}")
+    -d "{\"host\":\"www.pinkesz.cn\",\"key\":\"$KEY\",\"keyLocation\":\"$SITE/$KEY.txt\",\"urlList\":[$URLS]}")
   echo "  HTTP $HTTP （200/202 = 已接受）"
 else
   echo "  ⚠ 跳过：缺 .indexnow-key"

@@ -1,7 +1,60 @@
 # pinkesz.cn SEO / GEO 进度与基线
 
 > 基线时间：2026-08-30 05:00（站点当日迁至国内并完成备案号上线）
+> 第二阶段：2026-09-06（单页站 → 10 页，长尾落地页上线）
 > 相关 skill：`/seo-china`（收录）、`/geo-china`（AI 可见性）、`/seo-geo-content-china`（写文章）
+
+---
+
+## 〇、2026-09-06 更新：长尾落地页上线
+
+### 诊断（服务器 7 天全量日志，已排除本机 223.74.* 自测）
+
+| 爬虫 | 来访 | 判读 |
+|---|---|---|
+| Googlebot | 1183 | 海外自主发现 |
+| GPTBot / OAI-SearchBot | 752 | 同上 |
+| ClaudeBot / PerplexityBot | 462 | 同上 |
+| Applebot | 272 | 同上 |
+| **Bytespider** | **124** | ✅ 头条链路已通，豆包可见性有保障 |
+| **bingbot** | **4** | ⚠️ Kimi/DeepSeek 的数据源，偏少 |
+| **Baiduspider** | **0** | ❌ 连 robots.txt 都没抓过 |
+
+**排除的死因**（不是这些）：
+- 站点验证爬虫 `112.34.110.18` 于 8/30 抓走验证文件（200），验证链路正常
+- 百度渲染 IP `220.181.3.150` 于 8/31、9/4 多次抓首页（200），说明百度能连上
+- 主机安全 YJ-FIREWALL 封了 276 个 IP，含 2 个百度段（`123.125.6.94`、`180.76.179.77`），
+  但 **iptables 计数器均为 0**，按 `seo-china` 1.5 节判据不是元凶（仍建议加白名单，见待办）
+
+**真实瓶颈**：单页站全站只有 1 个 URL。百度对新站抓取预算本就极低，
+只给它一个页面等于没有可收录的内容；长尾词没有任何落地页去接；
+AI 摘录也只能反复摘同一段。
+
+### 做了什么
+
+| 动作 | 说明 |
+|---|---|
+| **新增 9 个长尾落地页** | `/shenzhenbei-office/`、`/minzhi-office/`、`/register-company/`、`/office-price/`、`/small-office/`、`/whole-floor-office/`、`/ecommerce-live-office/`、`/smart-hardware-office/`、`/pinke-apartment/` |
+| 页面生成器 | `scripts/pages_data.py`（内容）+ `scripts/build-pages.py`（模板），改内容不用碰 HTML |
+| 每页结构化数据 | WebPage + BreadcrumbList + FAQPage，事实字段填全（AI 提取结构化数据比读正文可靠） |
+| 首页内链入口 | FAQ 之后新增「你在找哪一种办公室？」9 张卡片，让爬虫从首页发现全部落地页 |
+| sitemap | 1 条 → 10 条 URL，lastmod 按各自源文件真实 mtime（不是全站统一时间戳） |
+| llms.txt | 加「详细页面（可直接引用）」导航段 + 公安备案号 |
+| **事实一致性修正** | 首页 hero 原写「5 栋 / 180+ 车位」，与全站其余位置的「6 栋 / 186 位」冲突 —— AI 引用错数字的代价比不被引用更高，已统一 |
+| 404 页 | 新增 `404.html`（多页站需要，避免软 404） |
+| 部署脚本 | `deploy.sh` 构建时自动生成落地页；IndexNow 改为推 sitemap 全量 URL |
+
+### 推送结果（2026-09-06）
+
+- 百度主动推送：`{"remain":0,"success":10}` —— 10 条全部接收，当日配额用尽
+- IndexNow：HTTP 200，10 条 URL（Bing / 神马 → 同时喂 Kimi、DeepSeek、夸克、千问）
+- 线上验证：10 个 URL 全部 200，Baiduspider UA 可正常抓取
+
+### 复查节点
+
+- **2026-09-09 前后**：查 Baiduspider 是否开始抓落地页（`grep -i baiduspider` 日志）
+- **2026-09-13 前后**：百度 `site:www.pinkesz.cn` 看收录条数
+- **2026-10-04 前后**：GEO 实测（第三节清单），此时索引与语料已更新 2~4 周
 
 ---
 
@@ -109,15 +162,53 @@ ssh root@115.159.211.15 'grep -i baiduspider /var/log/nginx/pinkesz.access.log |
 
 | 优先级 | 事项 | 喂给谁 | 入口 |
 |---|---|---|---|
-| 3 | 百度填**主体备案号** `粤ICP备2026122913号` | 开 sitemap 配额（单页站非必需，优先级已下调） | 站点属性页 |
 | ⭐1 | **重置百度准入密钥**（token 曾在截图中明文暴露） | 防配额被盗刷 | 普通收录页「修改准入密钥」 |
-| ~~⭐2~~ | ~~头条搜索站长平台提交~~ | ✅ **已完成** | — |
-| ~~2~~ | ~~搜狗 URL 提交~~ | ✅ **已完成** | — |
+| ⭐1 | **Nginx 两处改动**（2026-09-06 因权限未执行，见下方代码块） | 防 robots.txt 撞 301；消除软 404 | ssh 服务器 |
+| ⭐2 | 百度填**主体备案号** `粤ICP备2026122913号` | **开 sitemap 配额** —— 现在有 10 条 URL，日配额 10 条已见底，此项优先级上调 | 站点属性页 |
+| ⭐2 | **Bing 站长平台注册** | Kimi + DeepSeek 的数据源，bingbot 才来 4 次 | bing.com/webmasters |
 | 3 | 神马站长平台提交 | 通义千问 + 夸克 | zhanzhang.sm.cn |
-| 5 | Bing 站长平台注册 | 看数据（IndexNow 已在推） | bing.com/webmasters |
+| 3 | 头条搜索：把 9 个落地页 URL 再提交一次 | 豆包 | zhanzhang.toutiao.com |
+| 4 | 搜狗：逐条提交落地页 URL（有验证码，需人工） | 元宝 + 微信搜一搜 | zhanzhang.sogou.com |
 | 6 | 高德 key 白名单换成 pinkesz.cn | 防 key 裸奔 | console.amap.com |
-| 7 | 腾讯云主机安全加爬虫白名单 | 防误封（隐患非紧急） | console.cloud.tencent.com/cwp |
-| 8 | 公安网备案（ICP 通过后 30 天内） | 合规 | beian.mps.gov.cn |
+| 7 | 腾讯云主机安全加爬虫白名单 | 防误封（计数器为 0，隐患非紧急） | console.cloud.tencent.com/cwp |
+| ~~⭐2~~ | ~~头条搜索站长平台提交~~ | ✅ **已完成** | — |
+| ~~2~~ | ~~搜狗 URL 提交~~ | ✅ **已完成**（首页） | — |
+| ~~8~~ | ~~公安网备案~~ | ✅ **已完成** 2026-09-06，粤公网安备44030002016491号 | — |
+
+### ⭐ 待执行：Nginx 两处改动
+
+2026-09-06 尝试执行时被本地权限策略拦截，需手动跑。配置已备份为
+`/etc/nginx/sites-enabled/pinkesz.conf.bak-20260906`。
+
+**改动 1** —— 80 端口 server 块内，紧跟站长验证文件那段之后加：
+
+```nginx
+    # robots.txt / sitemap.xml / llms.txt 明文直出，不跳 HTTPS：
+    # 爬虫第一件事就是取 robots.txt，若撞上 301 可能直接判定站点不可抓
+    location ~ ^/(robots\.txt|sitemap\.xml|llms\.txt)$ {
+        root /var/www/pinkesz;
+    }
+```
+
+**改动 2** —— HTTPS 主站块，把 `location /` 换成：
+
+```nginx
+    location / {
+        try_files $uri $uri/ =404;
+        expires -1;          # HTML 不缓存（静态资源由上面各自的 location 覆盖）
+    }
+
+    # 多页站后不再把未知 URL 回落首页——软 404 会被搜索引擎判为低质重复
+    error_page 404 /404.html;
+    location = /404.html { internal; expires -1; }
+```
+
+改完执行 `nginx -t && systemctl reload nginx`，然后验证：
+
+```bash
+curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" http://www.pinkesz.cn/robots.txt   # 期望 200，无跳转
+curl -s -o /dev/null -w "%{http_code}\n" https://www.pinkesz.cn/this-page-does-not-exist/    # 期望 404
+```
 
 ### 内容平台占位（GEO 第二条腿，需账号）
 
